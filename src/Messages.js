@@ -18,22 +18,26 @@ class Messages extends Component {
     const {member, text, answer} = message;
     const {currentMember} = this.props;
     const messageFromMe = member.id === currentMember.id;
+    const test = "aa \n aaa"
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
     return (
       <div>
-        <li className={className}>
-            <span
-              className="avatar"
-              style={{backgroundColor: member.color}}
-            />
-            <div className="Message-content">
-            <div className="username">
-                {member.username}
-            </div>
-            <div className="text">{text}</div>
-            </div>
-        </li>
+        {
+          text ?
+          <li className={className}>
+              <span
+                className="avatar"
+                style={{backgroundColor: member.color}}
+              />
+              <div className="Message-content">
+              <div className="username">
+                  You
+              </div>
+              <div className="text">{text}</div>
+              </div>
+          </li> : null
+        }
         {
           answer ?
           <li className={"Messages-message"}>
@@ -43,9 +47,11 @@ class Messages extends Component {
               />
               <div className="Message-content">
                   <div className="username">
-                  {member.username}
+                    Atma Bot
                   </div>
-                  <div className="text">{ answer }</div>
+                  <div className="text">
+                    <p className="text"> { answer } </p>
+                  </div>
               </div>
           </li> : null
         }

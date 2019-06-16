@@ -19,19 +19,15 @@ function randomColor() {
 class App extends Component {
   state = {
     message: '',
-    question : [{
-      text: '',
-    }],
     answer : null,
-    coba: "Kau yabg asu",
     messages: [
       {
-        text: "This is a test message!",
+        text: "",
         member: {
           color: "blue",
           username: "bluemoon"
         },
-        answer: '',
+        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya.',
       }
     ],
     member: {
@@ -55,17 +51,14 @@ class App extends Component {
   }
 
   render() {
-    console.log('answer', this.state.answer)
     return (
       <div className="App">
         <div className="App-header">
-          <h1>My Chat App</h1>
+          <h1>Atmajaya Chatbot</h1>
         </div>
         <Messages
           messages={this.state.messages}
           currentMember={this.state.member}
-          question={this.state.question.text}
-          // answer={this.state.answer}
         />
         <Input
           onSendMessage={this.onSendMessage}
@@ -77,14 +70,25 @@ class App extends Component {
   onSendMessage = async (message) => {
     const messages = this.state.messages
     const question = this.state.question
+    const toShort = "Pertanyaan anda terlalu pendek, mohon perjelas minimal 2 kata. terima kasih"
     await this.handleAnswer(message)
-    console.log('answering',message)
-    messages.push({
-      text: message,
-      member: this.state.member,
-      answer: this.state.answer ? this.state.answer.data.answer[0].answer : ''
-    })
-
+    console.log('answering',(message.split(' ')).length)
+    if ((message.split(' ')).length == 1 && this.state.answer.data.answer[0].score <= 0.6) {
+      
+      messages.push({
+        text: message,
+        member: this.state.member,
+        answer: this.state.answer.data.answer[0].score == 3 ? this.state.answer.data.answer[0].answer : toShort
+      })
+    }
+    else {
+      messages.push({
+        text: message,
+        member: this.state.member,
+        answer: this.state.answer ? this.state.answer.data.answer[0].answer : ''
+      })
+    }
+    
     this.setState({
       message: message,
       messages: messages,
