@@ -1,26 +1,32 @@
 import {Component} from "react";
-import React from "react";
+import React, { createRef } from "react";
 
 class Messages extends Component {
   state = {
-    answer: this.props.answer ? this.props.answer.data.answer[0].answer : ''
+    answer: this.props.answer ? this.props.answer.data.answer[0].answer : '',
+    index : 0,
+    element: "",
   }
+
   render() {
     const { messages } = this.props;
     return (
-      <ul className="Messages-list">
-        {messages.map(m => this.renderMessage(m))}
-      </ul>
+      <div>
+        <ul className="Messages-list">
+          {messages.map((m,i) => this.renderMessage(m,i))}
+        </ul>
+      </div>
     );
   } 
 
-  renderMessage(message) {
+  renderMessage(message, i) {
     const {member, text, answer} = message;
-    const {currentMember} = this.props;
+    const {currentMember, messages} = this.props;
     const messageFromMe = member.id === currentMember.id;
     const test = "aa \n aaa"
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
+      
     return (
       <div>
         {
@@ -40,7 +46,9 @@ class Messages extends Component {
         }
         {
           answer ?
-          <li className={"Messages-message"}>
+          <li className={"Messages-message"}
+          key = {i}
+          id= {messages.length-1 === i ? "List" : "not"}>
               <span
                   className="avatar"
                   style={{backgroundColor: "red"}}
@@ -58,7 +66,6 @@ class Messages extends Component {
       </div>
     );
   }
-
 }
 
 export default Messages;

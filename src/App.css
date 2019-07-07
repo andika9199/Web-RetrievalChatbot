@@ -11,6 +11,7 @@
   width: 100%;
   text-align: center;
   color: white;
+  position: fixed;
 }
 
 .Messages-list {

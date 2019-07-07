@@ -27,18 +27,26 @@ class App extends Component {
           color: "blue",
           username: "bluemoon"
         },
-        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya.',
+        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya. \n Mungkin anda ingin mencari tahu tentang : \n 1. Penerimaan Mahasiswa Baru \n 2. Program studi yang diselenggarakan \n 3. Biaya pendaftaran \n 4. ',
       }
     ],
     member: {
       username: randomName(),
       color: randomColor()
+    },
+  }
+
+  componentDidUpdate() {
+    // const { element } = this.state
+    const element = document.getElementById("List");
+    console.log(element)
+    if (element) {
+      element.scrollIntoView();
+      console.log("masuk")
     }
   }
-  
-  async handleAnswer (message) {
-    //event.preventDefault()
 
+  async handleAnswer (message) {
     const question = {
       pertanyaan: message,
     }
@@ -54,7 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Atmajaya Chatbot</h1>
+          <h1>Atma Jaya Chatbot</h1>
         </div>
         <Messages
           messages={this.state.messages}
