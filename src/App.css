@@ -11,9 +11,12 @@
   width: 100%;
   text-align: center;
   color: white;
-  position: fixed;
+  position: fixed
 }
 
+.Message-container{
+  margin-top: 80px;
+}
 .Messages-list {
   padding: 20px 0;
   max-width: 900px;

@@ -64,13 +64,15 @@ class App extends Component {
         <div className="App-header">
           <h1>Atma Jaya Chatbot</h1>
         </div>
-        <Messages
-          messages={this.state.messages}
-          currentMember={this.state.member}
-        />
-        <Input
-          onSendMessage={this.onSendMessage}
-        />
+        <div className="Message-container">
+          <Messages
+            messages={this.state.messages}
+            currentMember={this.state.member}
+          />
+          <Input
+            onSendMessage={this.onSendMessage}
+          />
+        </div>
       </div>
     );
   }
