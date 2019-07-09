@@ -27,7 +27,7 @@ class App extends Component {
           color: "blue",
           username: "bluemoon"
         },
-        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya. \n Mungkin anda ingin mencari tahu tentang : \n 1. Penerimaan Mahasiswa Baru \n 2. Program studi yang diselenggarakan \n 3. Biaya pendaftaran \n 4. ',
+        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya. \n Mungkin anda ingin mencari tahu tentang : \n 1. Penerimaan Mahasiswa Baru \n 2. Program studi yang diselenggarakan \n 3. Biaya pendaftaran \n 4. Link Brosur ',
       }
     ],
     member: {
@@ -69,7 +69,7 @@ class App extends Component {
             messages={this.state.messages}
             currentMember={this.state.member}
           />
-          <Input
+          <Input className="Input-Container"
             onSendMessage={this.onSendMessage}
           />
         </div>
@@ -78,13 +78,13 @@ class App extends Component {
   }
 
   onSendMessage = async (message) => {
+    const { answer } = this.state
     const messages = this.state.messages
     const question = this.state.question
     const toShort = "Pertanyaan anda terlalu pendek, mohon perjelas minimal 2 kata. terima kasih"
     await this.handleAnswer(message)
     console.log('answering',(message.split(' ')).length)
-    if ((message.split(' ')).length == 1 && this.state.answer.data.answer[0].score <= 0.6) {
-      
+    if ((message.split(' ')).length == 1 && (answer.data.answer[0].score <= 0.6 || answer.data.answer[0].score == 2)) {
       messages.push({
         text: message,
         member: this.state.member,

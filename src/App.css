@@ -17,6 +17,10 @@
 .Message-container{
   margin-top: 80px;
 }
+.Input-Container{
+  position: fixed;
+  
+}
 .Messages-list {
   padding: 20px 0;
   max-width: 900px;
@@ -34,7 +38,6 @@
 }
 
 .Messages-message.currentMember {
-  /*justify-content: flex-end;*/
   flex-direction: row-reverse;
   text-align: right;
 }
