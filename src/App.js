@@ -84,7 +84,7 @@ class App extends Component {
     const toShort = "Pertanyaan anda terlalu pendek, mohon perjelas minimal 2 kata. terima kasih"
     await this.handleAnswer(message)
     console.log('answering',(message.split(' ')).length)
-    if ((message.split(' ')).length == 1 && (answer.data.answer[0].score <= 0.6 || answer.data.answer[0].score == 2)) {
+    if ((message.split(' ')).length == 1 ) {
       messages.push({
         text: message,
         member: this.state.member,
