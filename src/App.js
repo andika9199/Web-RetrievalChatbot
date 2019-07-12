@@ -27,7 +27,7 @@ class App extends Component {
           color: "blue",
           username: "bluemoon"
         },
-        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya. \n Mungkin anda ingin mencari tahu tentang : \n 1. Penerimaan Mahasiswa Baru \n 2. Program studi yang diselenggarakan \n 3. Biaya pendaftaran \n 4. Link Brosur ',
+        answer: 'Halo, Apakah ada yang bisa saya bantu ? \n Anda bisa langsung menanyakanya pada saya. \n Mungkin anda ingin mencari tahu tentang : \n -Penerimaan Mahasiswa Baru \n -Program studi yang diselenggarakan \n -Biaya pendaftaran \n -Link Brosur ',
       }
     ],
     member: {
