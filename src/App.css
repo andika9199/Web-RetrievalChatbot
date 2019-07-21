@@ -73,11 +73,17 @@
   background-color: cornflowerblue;
   color: white;
   display: inline-block;
-  white-space: pre-line
+  white-space: pre-line;
+  font-size: 14px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .currentMember > .Message-content .text {
   background-color: orangered;
+  font-size: 14px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 form {

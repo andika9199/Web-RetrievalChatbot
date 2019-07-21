@@ -1,5 +1,5 @@
 import {Component} from "react";
-import React, { createRef } from "react";
+import React from "react";
 
 class Messages extends Component {
   state = {
@@ -23,10 +23,8 @@ class Messages extends Component {
     const {member, text, answer} = message;
     const {currentMember, messages} = this.props;
     const messageFromMe = member.id === currentMember.id;
-    const test = "aa \n aaa"
     const className = messageFromMe ?
       "Messages-message currentMember" : "Messages-message";
-      
     return (
       <div>
         {
@@ -57,9 +55,13 @@ class Messages extends Component {
                   <div className="username">
                     Atma Bot
                   </div>
-                  <div className="text">
-                    <p className="text"> { answer } </p>
-                  </div>
+                    <div className="text">
+                      {
+                        answer.includes('http') ? <a href={answer} target="_blank"> Bisa membuka Link Berikut </a>
+                        :
+                        <p className="text"> { answer } </p> 
+                      }
+                    </div>
               </div>
           </li> : null
         }
